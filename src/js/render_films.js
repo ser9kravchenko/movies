@@ -15,7 +15,7 @@ export const renderFilms = (filmsData) => {
             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
                 <div class="movie-card">
                     <a href="${film.id}" class="movie-card__link">
-                        <img src="${posterUrl}${film.poster}" alt="" class="movie-card__poster">
+                        <img src="${posterUrl}${film.poster}" alt="" class="movie-card__poster img-fluid">
                     </a>
                     <span class="movie-card__title">${film.title}</span>
                     <span class="movie-card__release-date">${film.releaseDate}</span>
@@ -29,6 +29,4 @@ export const renderFilms = (filmsData) => {
     });
 
     $('.movies-content').html(filmsHtml);
-    console.log(filmsData)
-    console.log(filmsHtml)
 };

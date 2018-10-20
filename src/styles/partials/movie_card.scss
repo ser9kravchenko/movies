@@ -1,0 +1,22 @@
+.movie-card{
+  padding-bottom: 15px;
+
+  .movie-card__poster{
+    margin-bottom: 10px;
+  }
+
+  .movie-card__title{
+    display: block;
+    font-size: 20px;
+    color: #ddd;
+    border-bottom: 1px solid #666;
+    padding-bottom: 12px;
+  }
+
+  .movie-card__release-date{
+    display: block;
+    font-size: 16px;
+    color: #ddd;
+  }
+
+}
