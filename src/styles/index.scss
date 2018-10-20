@@ -1,7 +1,9 @@
 body{
   background: #222;
+  padding: 20px 0;
 }
 
 
 @import "partials/movie_card";
 @import "partials/rating";
+@import "partials/search";

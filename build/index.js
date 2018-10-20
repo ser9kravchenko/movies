@@ -116,7 +116,7 @@ eval("/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _js_get_films__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/get_films */ \"./src/js/get_films.js\");\n\n$(function () {\n  Object(_js_get_films__WEBPACK_IMPORTED_MODULE_0__[\"getFilms\"])();\n});\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery/dist/jquery.min.js */ \"./node_modules/jquery/dist/jquery.min.js\")))\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _js_get_films__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/get_films */ \"./src/js/get_films.js\");\n/* harmony import */ var _js_search__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/search */ \"./src/js/search.js\");\n\n\n$(function () {\n  Object(_js_get_films__WEBPACK_IMPORTED_MODULE_0__[\"getFilms\"])();\n  $('.search .search__input').on('input', function () {\n    Object(_js_search__WEBPACK_IMPORTED_MODULE_1__[\"search\"])($(this).val());\n  });\n});\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery/dist/jquery.min.js */ \"./node_modules/jquery/dist/jquery.min.js\")))\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -141,6 +141,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"renderFilms\", function() { return renderFilms; });\nvar renderFilms = function renderFilms(filmsData) {\n  var films = filmsData.map(function (film) {\n    return {\n      id: film.id,\n      title: film.title,\n      poster: film.poster_path,\n      releaseDate: film.release_date,\n      rating: film.vote_average\n    };\n  });\n  var filmsHtml = films.map(function (film) {\n    var posterUrl = 'https://image.tmdb.org/t/p/w500';\n    return \"\\n            <div class=\\\"col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12\\\">\\n                <div class=\\\"movie-card\\\">\\n                    <a href=\\\"\".concat(film.id, \"\\\" class=\\\"movie-card__link\\\">\\n                        <img src=\\\"\").concat(posterUrl).concat(film.poster, \"\\\" alt=\\\"\\\" class=\\\"movie-card__poster img-fluid\\\">\\n                    </a>\\n                    <span class=\\\"movie-card__title\\\">\").concat(film.title, \"</span>\\n                    <span class=\\\"movie-card__release-date\\\">\").concat(film.releaseDate, \"</span>\\n                    <div class=\\\"movie-card__rating rating\\\">\\n                        <div class=\\\"rating__stars rating__stars_active\\\" style=\\\"width: \").concat(film.rating * 10, \"%\\\">\\n                            <img src=\\\"images/yellow_stars.svg\\\" alt=\\\"\\\">\\n                        </div>\\n                        <div class=\\\"rating__stars\\\">\\n                            <img src=\\\"images/grey_stars.svg\\\" alt=\\\"\\\">\\n                        </div>\\n                    </div>\\n                </div>\\n            </div>\\n        \");\n  });\n  $('.movies-content').html(filmsHtml);\n};\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery/dist/jquery.min.js */ \"./node_modules/jquery/dist/jquery.min.js\")))\n\n//# sourceURL=webpack:///./src/js/render_films.js?");
+
+/***/ }),
+
+/***/ "./src/js/search.js":
+/*!**************************!*\
+  !*** ./src/js/search.js ***!
+  \**************************/
+/*! exports provided: search */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"search\", function() { return search; });\n/* harmony import */ var _get_films__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./get_films */ \"./src/js/get_films.js\");\n/* harmony import */ var _render_films__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./render_films */ \"./src/js/render_films.js\");\n\n\nvar search = function search(searchText) {\n  var apiKey = '145bcb3478db0e44194593b2b53f60a9';\n  var url = \"https://api.themoviedb.org/3/search/movie?api_key=\".concat(apiKey, \"&query=\").concat(searchText);\n\n  if (searchText.length) {\n    fetch(url).then(function (response) {\n      return response.json();\n    }).then(function (data) {\n      Object(_render_films__WEBPACK_IMPORTED_MODULE_1__[\"renderFilms\"])(data.results);\n    });\n  } else {\n    Object(_get_films__WEBPACK_IMPORTED_MODULE_0__[\"getFilms\"])();\n  }\n};\n\n//# sourceURL=webpack:///./src/js/search.js?");
 
 /***/ })
 

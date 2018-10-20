@@ -88,7 +88,7 @@ gulp.task('watch', function(){
         gulp.start('css:build');
     });
     watch([paths.watch.js], function(event, cb){
-        gulp.start('js:build').pipe(reload());
+        gulp.start('js:build').pipe(reload({stream: true}));
     });
 });
 

@@ -1,5 +1,6 @@
 body {
-  background: #222; }
+  background: #222;
+  padding: 20px 0; }
 
 .movie-card {
   padding-bottom: 15px; }
@@ -28,3 +29,14 @@ body {
     overflow: hidden; }
     .rating .rating__stars.rating__stars_active {
       z-index: 1; }
+
+.search {
+  margin-bottom: 20px; }
+  .search .search__input {
+    background: #222;
+    height: 40px;
+    outline: none;
+    width: 100%;
+    color: #ddd;
+    border: none;
+    border-bottom: 1px solid #666; }
