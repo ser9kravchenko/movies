@@ -55,7 +55,6 @@ gulp.task('html:build', function(){
 
 gulp.task('css:build', function(){
     gulp.src(paths.src.styles)
-        .pipe(wait(500))
         .pipe(sass())
         .pipe(autoprefixer())
         .pipe(gulp.dest(paths.build.styles))
