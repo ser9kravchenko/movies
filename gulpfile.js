@@ -16,19 +16,22 @@ const paths = {
     build: {
         html: 'build/',
         styles: 'build/styles/',
-        js: 'build/'
+        js: 'build/',
+        images: 'build/images/'
     },
 
     src: {
         html: 'src/*.html',
         styles: ['node_modules/bootstrap/scss/bootstrap.scss', 'src/styles/*.scss'],
-        js: ['node_modules/jquery/dist/jquery.min.js','node_modules/bootstrap/dist/js/bootstrap.min.js', 'src/**/*.js']
+        js: ['node_modules/jquery/dist/jquery.min.js','node_modules/bootstrap/dist/js/bootstrap.min.js', 'src/**/*.js'],
+        images: 'src/images/*.*'
     },
 
     watch: {
         html: 'src/**/*.html',
         styles: 'src/**/styles/**/*.scss',
-        js: 'src/**/*.js'
+        js: 'src/**/*.js',
+        images: 'src/images/*.*'
     },
 
     clean: './build'
@@ -68,7 +71,13 @@ gulp.task('js:build', () => {
         .pipe(gulp.dest(paths.build.js));
 });
 
-gulp.task('build', ['html:build', 'css:build', 'js:build']);
+gulp.task('img:build', function(){
+    gulp.src(paths.src.images)
+        .pipe(gulp.dest(paths.build.images))
+        .pipe(reload({stream: true}))
+});
+
+gulp.task('build', ['html:build', 'css:build', 'js:build', 'img:build']);
 
 
 gulp.task('watch', function(){

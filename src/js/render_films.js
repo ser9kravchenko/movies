@@ -20,8 +20,12 @@ export const renderFilms = (filmsData) => {
                     <span class="movie-card__title">${film.title}</span>
                     <span class="movie-card__release-date">${film.releaseDate}</span>
                     <div class="movie-card__rating rating">
-                        <div class="rating__stars rating__stars_active"></div>
-                        <div class="rating__stars"></div>
+                        <div class="rating__stars rating__stars_active" style="width: ${film.rating * 10}%">
+                            <img src="images/yellow_stars.svg" alt="">
+                        </div>
+                        <div class="rating__stars">
+                            <img src="images/grey_stars.svg" alt="">
+                        </div>
                     </div>
                 </div>
             </div>

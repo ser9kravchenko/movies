@@ -1,0 +1,17 @@
+.rating{
+
+  height: 20px;
+  width: 100px;
+  position: relative;
+
+  .rating__stars{
+    position: absolute;
+    left:0;
+    bottom: 0;
+    overflow: hidden;
+
+    &.rating__stars_active{
+      z-index: 1;
+    }
+  }
+}
