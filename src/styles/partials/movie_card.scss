@@ -8,9 +8,13 @@
   .movie-card__title{
     display: block;
     font-size: 20px;
-    color: #ddd;
     border-bottom: 1px solid #666;
     padding-bottom: 12px;
+  }
+
+  .movie-card__link{
+    color: #ddd;
+    text-decoration: none;
   }
 
   .movie-card__release-date{

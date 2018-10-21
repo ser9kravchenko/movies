@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: {
         index:'./src/index.js',
         bootstrap:'./node_modules/bootstrap/dist/js/bootstrap.js'

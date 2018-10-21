@@ -7,6 +7,7 @@ const rigger = require('gulp-rigger');
 const watch = require('gulp-watch');
 const autoprefixer = require('gulp-autoprefixer');
 const sass = require('gulp-sass');
+const cleanCss = require('gulp-clean-css');
 const browserSync = require('browser-sync');
 const reload = browserSync.reload;
 
@@ -21,7 +22,7 @@ const paths = {
     },
 
     src: {
-        html: 'src/*.html',
+        html: 'src/**/*.html',
         styles: ['node_modules/bootstrap/scss/bootstrap.scss', 'src/styles/*.scss'],
         js: ['node_modules/jquery/dist/jquery.min.js','node_modules/bootstrap/dist/js/bootstrap.min.js', 'src/**/*.js'],
         images: 'src/images/*.*'
@@ -38,14 +39,7 @@ const paths = {
 };
 
 
-const config = {
-    server: {
-        baseDir: './build'
-    },
-    host: 'localhost',
-    port: 3000,
-    logPrefix: 'movies'
-};
+
 
 
 gulp.task('html:build', function(){
@@ -60,6 +54,7 @@ gulp.task('css:build', function(){
     gulp.src(paths.src.styles)
         .pipe(sass())
         .pipe(autoprefixer())
+        .pipe(cleanCss({compatibility: 'ie8'}))
         .pipe(gulp.dest(paths.build.styles))
         .pipe(reload({stream: true}))
 });
@@ -92,7 +87,17 @@ gulp.task('watch', function(){
     });
 });
 
-
+const config = {
+    server: {
+        baseDir: './build',
+        serveStaticOptions: {
+            extensions: ['html']
+        },
+    },
+    host: 'localhost',
+    port: 3000,
+    logPrefix: 'movies',
+};
 gulp.task('webserver', function(){
     browserSync(config);
 });
